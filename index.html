@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shreya &amp; Rahul – Forever Begins</title>
+<meta name="description" content="You are invited to the wedding celebration of Shreya & Rahul – Germany.">
+<meta name="theme-color" content="#04302a">
+<meta property="og:title" content="Shreya & Rahul – Forever Begins">
+<meta property="og:description" content="You are invited to our wedding celebration in Germany.">
+<meta property="og:image" content="images/03-cover-couple.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2304302a'/%3E%3Ctext x='50' y='64' font-size='46' text-anchor='middle' fill='%23e3c277' font-family='serif'%3ES%26R%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked">
+
+<!-- ================= LOADING SCREEN ================= -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-mono"><span>S</span><i>&amp;</i><span>R</span></div>
+  <div class="loader-line"><b></b></div>
+</div>
+
+<canvas id="particles" aria-hidden="true"></canvas>
+<canvas id="petals" aria-hidden="true"></canvas>
+
+<!-- ================= GATE: HERO OPENING ================= -->
+<section id="gate">
+  <div class="gate-photos" aria-hidden="true">
+    <div class="gate-photo left"><img id="gatePhotoL" alt=""></div>
+    <div class="gate-photo right"><img id="gatePhotoR" alt=""></div>
+  </div>
+  <div class="gate-shade"></div>
+  <div class="floral tl"></div><div class="floral br"></div>
+  <div class="gate-content">
+    <p class="eyebrow">The Wedding of</p>
+    <h1 class="names gold-text"><span id="gBride">Shreya</span><em>&amp;</em><span id="gGroom">Rahul</span></h1>
+    <p class="invite-line" id="gInvite">Invite you to their wedding celebration</p>
+    <p class="gate-place"><span id="gPlace">Germany</span></p>
+    <button class="btn-gold" id="openBtn" type="button">Open Invitation</button>
+  </div>
+
+  <!-- envelope that plays after click -->
+  <div class="envelope-stage" id="envStage" aria-hidden="true">
+    <div class="envelope">
+      <div class="env-back"></div>
+      <div class="env-letter"><div class="letter-inner"><span class="gold-text">S &amp; R</span><small id="envNames">Shreya &amp; Rahul</small></div></div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="seal"><span>S&amp;R</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NAV ================= -->
+<header id="nav" class="hidden-until-open">
+  <a href="#home" class="nav-logo gold-text">S &amp; R</a>
+  <button id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  <nav id="navLinks">
+    <a href="#couple">Couple</a><a href="#story">Story</a><a href="#date">Date</a>
+    <a href="#venue">Venue</a><a href="#schedule">Schedule</a><a href="#gallery">Gallery</a>
+    <a href="#details">Details</a><a href="#rsvp" class="nav-rsvp">RSVP</a>
+  </nav>
+</header>
+
+<!-- ================= MUSIC PLAYER ================= -->
+<div id="player" class="hidden-until-open" role="group" aria-label="Music player">
+  <div class="viz" id="viz" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <button id="pBack" aria-label="Back 15 seconds" class="pbtn small">
+    <svg viewBox="0 0 24 24"><path d="M11 6v12L3 12zM21 6v12l-8-6z"/></svg></button>
+  <button id="pPlay" aria-label="Play or pause music" class="pbtn big">
+    <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+  <button id="pFwd" aria-label="Forward 15 seconds" class="pbtn small">
+    <svg viewBox="0 0 24 24"><path d="M13 6v12l8-6zM3 6v12l8-6z"/></svg></button>
+  <button id="pMute" aria-label="Mute or unmute" class="pbtn small">
+    <svg class="i-vol" viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9zM16 8a5 5 0 010 8M18.5 5.5a9 9 0 010 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <svg class="i-mute" viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9z"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+</div>
+<audio id="bgm" preload="auto" loop></audio>
+
+<main id="main" class="hidden-until-open">
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-bg"><img id="heroImg" alt="Shreya and Rahul"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-content reveal">
+      <p class="eyebrow">Together with their families</p>
+      <h2 class="names gold-text"><span id="hBride">Shreya</span><em>&amp;</em><span id="hGroom">Rahul</span></h2>
+      <p class="invite-line" id="hInvite"></p>
+      <p class="hero-date" id="hDate"></p>
+      <p class="hero-place" id="hPlace"></p>
+      <a href="#countdown" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section id="countdown" class="sec dark">
+    <div class="sec-inner center reveal">
+      <h2 class="script gold-text">The Countdown</h2>
+      <p class="sub">to our forever begins</p>
+      <div class="cd" id="cd">
+        <div><b id="cdD">--</b><span>Days</span></div><i>:</i>
+        <div><b id="cdH">--</b><span>Hours</span></div><i>:</i>
+        <div><b id="cdM">--</b><span>Minutes</span></div><i>:</i>
+        <div><b id="cdS">--</b><span>Seconds</span></div>
+      </div>
+      <p class="cd-done gold-text" id="cdDone" hidden>Our Forever Begins Today!</p>
+    </div>
+  </section>
+
+  <!-- COUPLE -->
+  <section id="couple" class="sec">
+    <div class="sec-inner">
+      <h2 class="sec-title reveal"><small>Meet</small>The Couple</h2>
+      <div class="couple-grid">
+        <article class="person reveal">
+          <div class="frame"><img id="bridePhoto" alt="Bride" loading="lazy"></div>
+          <h3 class="gold-text" id="cBride">Shreya</h3>
+          <p class="role" id="cBrideRole"></p><p id="cBrideText"></p>
+        </article>
+        <div class="amp reveal" aria-hidden="true"><span class="gold-text">&amp;</span></div>
+        <article class="person reveal">
+          <div class="frame"><img id="groomPhoto" alt="Groom" loading="lazy"></div>
+          <h3 class="gold-text" id="cGroom">Rahul</h3>
+          <p class="role" id="cGroomRole"></p><p id="cGroomText"></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOVE STORY -->
+  <section id="story" class="sec dark">
+    <div class="sec-inner">
+      <h2 class="sec-title reveal"><small>Our</small>Love Story</h2>
+      <div class="timeline" id="storyList"></div>
+    </div>
+  </section>
+
+  <!-- DATE -->
+  <section id="date" class="sec">
+    <div class="sec-inner center reveal">
+      <h2 class="sec-title"><small>Save the date</small>The Wedding Day</h2>
+      <div class="date-card">
+        <div class="dc-row"><span id="dDay">—</span><b id="dNum" class="gold-text">—</b><span id="dTime">—</span></div>
+        <div class="dc-month" id="dMonth">—</div>
+        <div class="dc-year" id="dYear">—</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-ghost" id="calBtn" type="button">Add to Calendar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section id="venue" class="sec dark">
+    <div class="sec-inner">
+      <h2 class="sec-title reveal"><small>Where</small>The Venue</h2>
+      <div class="venue-card reveal">
+        <div class="venue-photo"><img id="venueImg" alt="Wedding venue" loading="lazy"><span class="badge" id="venueBadge">Germany</span></div>
+        <div class="venue-info">
+          <p class="eyebrow" id="vCountry">Germany</p>
+          <h3 class="gold-text" id="vName"></h3>
+          <p id="vAddress"></p>
+          <p class="vcity" id="vCity"></p>
+          <p class="note" id="vNote"></p>
+          <div class="btn-row left">
+            <a class="btn-gold sm" id="mapBtn" target="_blank" rel="noopener">Google Maps</a>
+            <a class="btn-ghost sm" id="dirBtn" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" class="sec">
+    <div class="sec-inner">
+      <h2 class="sec-title reveal"><small>Our</small>Wedding Timeline</h2>
+      <ol class="vt" id="scheduleList"></ol>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="sec dark">
+    <div class="sec-inner wide">
+      <h2 class="sec-title reveal"><small>Moments</small>Our Gallery</h2>
+      <div class="masonry" id="masonry"></div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section id="details" class="sec">
+    <div class="sec-inner">
+      <div class="panel reveal" id="dressPanel">
+        <h2 class="panel-title">Dress Code</h2>
+        <div class="two">
+          <div><small>For Men</small><p id="dcMen"></p></div>
+          <div><small>For Women</small><p id="dcWomen"></p></div>
+        </div>
+        <div class="palette" id="palette"></div>
+        <p class="note" id="dcNote"></p>
+      </div>
+
+      <div class="panel reveal" id="hotelPanel">
+        <h2 class="panel-title">Accommodation</h2>
+        <h3 class="gold-text" id="hName"></h3>
+        <p id="hAddress"></p>
+        <p class="note" id="hNote"></p>
+        <p class="contact" id="hContact"></p>
+        <div class="btn-row">
+          <a class="btn-gold sm" id="hBook" target="_blank" rel="noopener" hidden>Book a Room</a>
+          <a class="btn-ghost sm" id="hMap" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+
+      <div class="panel reveal" id="regPanel">
+        <h2 class="panel-title">Wedding Registry</h2>
+        <p id="regMsg"></p>
+        <div class="btn-row"><a class="btn-gold" id="regBtn" target="_blank" rel="noopener">Wedding Registry</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="sec dark rsvp-sec">
+    <div class="sec-inner narrow">
+      <div class="rsvp-title reveal"><small>Please</small><div class="big gold-text">RSVP</div><p id="rsvpDeadline" class="sub"></p></div>
+      <form id="rsvpForm" class="form reveal" novalidate>
+        <label>Guest Name *<input name="name" type="text" required autocomplete="name"></label>
+        <div class="row2">
+          <label>Phone Number<input name="phone" type="tel" autocomplete="tel"></label>
+          <label>Email *<input name="email" type="email" required autocomplete="email"></label>
+        </div>
+        <div class="row2">
+          <label>Number of Guests *<select name="guests" id="guestSel" required></select></label>
+          <fieldset class="attend"><legend>Will you attend? *</legend>
+            <label class="chip"><input type="radio" name="attending" value="Attending" required><span>Joyfully Attending</span></label>
+            <label class="chip"><input type="radio" name="attending" value="Not Attending"><span>Regretfully Not</span></label>
+          </fieldset>
+        </div>
+        <label>Personal Message<textarea name="message" rows="3"></textarea></label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <button class="btn-gold wide" type="submit" id="rsvpSubmit">Submit RSVP</button>
+        <p class="form-msg" id="rsvpMsg" role="status" aria-live="polite"></p>
+        <div class="btn-row"><a class="btn-ghost sm" id="rsvpWA" target="_blank" rel="noopener" hidden>RSVP on WhatsApp</a></div>
+      </form>
+
+      <div class="share reveal">
+        <button class="btn-ghost sm" id="shWA" type="button">Share on WhatsApp</button>
+        <button class="btn-ghost sm" id="shCopy" type="button">Copy Invitation Link</button>
+        <button class="btn-ghost sm" id="shCal" type="button">Add to Calendar</button>
+        <a class="btn-ghost sm" id="shMap" target="_blank" rel="noopener">Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL MONOGRAM -->
+  <section id="final" class="final">
+    <div class="final-photos reveal"><img id="fin1" alt="" loading="lazy"><img id="fin2" alt="" loading="lazy"></div>
+    <div class="monogram reveal">
+      <svg class="leaves" viewBox="0 0 400 300" aria-hidden="true">
+        <g fill="none" stroke="url(#gg)" stroke-width="1.6" stroke-linecap="round">
+          <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#8b6a2b"/><stop offset=".5" stop-color="#f3dd9a"/><stop offset="1" stop-color="#b8903f"/></linearGradient></defs>
+          <path d="M60 240 C 20 170, 40 90, 120 40"/><path d="M340 240 C 380 170, 360 90, 280 40"/>
+          <path d="M45 190c-22-6-30-22-28-38 20 4 32 16 28 38zM38 150c-20-10-24-26-18-40 18 8 26 22 18 40zM48 105c-14-14-14-30-6-42 14 10 18 26 6 42zM75 68c-8-16-4-30 6-38 8 14 6 28-6 38zM355 190c22-6 30-22 28-38-20 4-32 16-28 38zM362 150c20-10 24-26 18-40-18 8-26 22-18 40zM352 105c14-14 14-30 6-42-14 10-18 26-6 42zM325 68c8-16 4-30-6-38-8 14-6 28 6 38z"/>
+          <circle cx="200" cy="30" r="4"/><circle cx="200" cy="270" r="4"/>
+        </g>
+      </svg>
+      <div class="mono-letters gold-text"><span>S</span><i>&amp;</i><span>R</span></div>
+    </div>
+    <p class="forever reveal">Forever Starts Here</p>
+    <p class="final-names gold-text reveal" id="finNames">Shreya &amp; Rahul</p>
+  </section>
+</main>
+
+<footer id="footer" class="hidden-until-open">
+  <p class="gold-text" id="fNames">Shreya &amp; Rahul</p>
+  <p id="fPlace">Germany</p>
+  <p class="tiny">Made with love · <span id="fYear"></span></p>
+</footer>
+
+<button id="toTop" aria-label="Back to top" class="hidden-until-open">↑</button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" hidden>
+  <button class="lb-close" aria-label="Close">×</button>
+  <button class="lb-prev" aria-label="Previous">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-next" aria-label="Next">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
